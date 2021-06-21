@@ -84,5 +84,44 @@ export default {
     },
     setCurrentConversation(context,conversation_id){
         context.commit("setCurrentConversation", conversation_id);
-    }, 
+    },
+    async createConversation(context,payload){
+        console.log(context);
+        console.log('create conv action fired');
+        var convCollection = firebase.collection('conversations');
+        convCollection.add(payload);
+    },
+    async sendMsg(context,payload){
+        var sent_by = payload.sent_by;
+        // var msg_text = payload.msg_text;
+        console.log(context);
+        var conv_id = payload.conv_id;
+        var members = payload.members;
+        var conv_type = payload.conv_type;
+        var sent_at = new Date();
+        var new_msg = payload.new_msg;
+        var msgCollection = firebase.collection('messages');
+        msgCollection.add(new_msg)
+        .then(function(docRef) {
+            var msg_id = docRef.id;
+            var unreadCollection = firebase.collection('unread_records');   
+            for(var i=0;i<members.length;i++){
+              var temp_member = members[i];
+              console.log(temp_member,sent_by)
+              if(sent_by != temp_member){
+                var unread_record = {
+                  conv_id: conv_id,
+                  conv_type: conv_type,
+                  msg_id: msg_id,
+                  user_id: temp_member,
+                  created_at: sent_at
+                }
+                unreadCollection.add(unread_record);
+              }
+            }
+        })
+        .catch(function(error) {
+            console.error("Error adding document: ", error);
+        });
+    } 
 }
