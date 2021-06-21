@@ -1,4 +1,4 @@
-# firestore_chat
+# Firestore Chat
 
 ## Feature List
 
