@@ -21,8 +21,8 @@
             </div>
           </div>
           <div class="card-body contacts_body">
-            <ui class="contacts">
-              <li class="active">
+            <ul class="contacts">
+              <li v-for="item in $store.state.chat.conversations" :key="item.id" class="active" @click="selectConversation(item.id)">
                 <div class="d-flex bd-highlight">
                   <div class="img_cont">
                     <img
@@ -31,13 +31,13 @@
                     />
                     <span class="online_icon"></span>
                   </div>
-                  <div class="user_info">
-                    <span>Khalid</span>
-                    <p>Kalid is online</p>
+                  <div class="user_info" style="width: 150px;">
+                    <span style="word-wrap: break-word;">{{item.title}}</span>
+                    <!-- <p>Kalid is online</p> -->
                   </div>
                 </div>
               </li>
-              <li>
+              <!-- <li>
                 <div class="d-flex bd-highlight">
                   <div class="img_cont">
                     <img
@@ -51,53 +51,8 @@
                     <p>Taherah left 7 mins ago</p>
                   </div>
                 </div>
-              </li>
-              <li>
-                <div class="d-flex bd-highlight">
-                  <div class="img_cont">
-                    <img
-                      src="https://i.pinimg.com/originals/ac/b9/90/acb990190ca1ddbb9b20db303375bb58.jpg"
-                      class="rounded-circle user_img"
-                    />
-                    <span class="online_icon"></span>
-                  </div>
-                  <div class="user_info">
-                    <span>Sami Rafi</span>
-                    <p>Sami is online</p>
-                  </div>
-                </div>
-              </li>
-              <li>
-                <div class="d-flex bd-highlight">
-                  <div class="img_cont">
-                    <img
-                      src="http://profilepicturesdp.com/wp-content/uploads/2018/07/sweet-girl-profile-pictures-9.jpg"
-                      class="rounded-circle user_img"
-                    />
-                    <span class="online_icon offline"></span>
-                  </div>
-                  <div class="user_info">
-                    <span>Nargis Hawa</span>
-                    <p>Nargis left 30 mins ago</p>
-                  </div>
-                </div>
-              </li>
-              <li>
-                <div class="d-flex bd-highlight">
-                  <div class="img_cont">
-                    <img
-                      src="https://static.turbosquid.com/Preview/001214/650/2V/boy-cartoon-3D-model_D.jpg"
-                      class="rounded-circle user_img"
-                    />
-                    <span class="online_icon offline"></span>
-                  </div>
-                  <div class="user_info">
-                    <span>Rashid Samim</span>
-                    <p>Rashid left 50 mins ago</p>
-                  </div>
-                </div>
-              </li>
-            </ui>
+              </li> -->
+            </ul>
           </div>
           <div class="card-footer"></div>
         </div>
@@ -242,6 +197,37 @@
     </div>
   </div>
 </template>
+
+<script>
+export default{
+  name: 'Chat',
+  data(){
+    return {};
+  },
+  created(){
+    let user_info = this.$store.getters['userInfo'];
+    let user_id = user_info.user_id;
+    this.$store.dispatch('getConversations',user_id);
+    this.$store.dispatch('getMsgs');
+    this.$store.dispatch('getUnreadRecords',user_id);
+  },
+  methods:{
+    selectConversation(conv_id){
+      // this.current_conversation = conv_id;
+      this.$store.dispatch('setCurrentConversation',conv_id);
+      
+      var user_id = this.$store.state.user.user.id;
+      var payload = {
+        user_id: user_id,
+        conv_id:conv_id
+      }
+
+      this.$store.dispatch('clearUnreadMsg',payload);
+    },
+  }
+}
+</script>
+
 
 <style>
 body,
