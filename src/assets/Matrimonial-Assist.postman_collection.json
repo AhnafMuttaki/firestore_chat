@@ -1,0 +1,3460 @@
+{
+	"info": {
+		"_postman_id": "1b9c6c96-74f9-4c51-b6a6-315c4581f664",
+		"name": "Matrimonial-Assist",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Authinticat",
+			"item": [
+				{
+					"name": "register",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n     \"full_name\":\"representative test\",\n     \"email\":\"representative@bs-23.net\",\n     \"password\":\"12345678\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/register",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"postman.setEnvironmentVariable(\"access_token\", \"Bearer \"+jsonData.data.token.access_token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"candidate@yopmail.com\",\n    \"password\":\"12345\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "emailVerify",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"postman.setEnvironmentVariable(\"access_token\", \"Bearer \"+jsonData.data.token.access_token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"token\":\"639aca9abe17259278e498df1321f52019265093\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/emailVerify",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"emailVerify"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User Information",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{access_token}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODg4OFwvYXBpXC92MVwvcmVnaXN0ZXIiLCJpYXQiOjE2MTg5ODk3NzQsImV4cCI6MTYxOTM0OTc3NCwibmJmIjoxNjE4OTg5Nzc0LCJqdGkiOiIzeVVZVFRrSlhvVVE1YllSIiwic3ViIjo1LCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.iXhmrkR6_oV7y5IyxLf3S0hoDxMkVv8yKegqDY3LKD0",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/user",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User Profile Information",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{access_token}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODg4OFwvYXBpXC92MVwvcmVnaXN0ZXIiLCJpYXQiOjE2MTg5ODk3NzQsImV4cCI6MTYxOTM0OTc3NCwibmJmIjoxNjE4OTg5Nzc0LCJqdGkiOiIzeVVZVFRrSlhvVVE1YllSIiwic3ViIjo1LCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.iXhmrkR6_oV7y5IyxLf3S0hoDxMkVv8yKegqDY3LKD0",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/user-profile?user_id=6",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user-profile"
+							],
+							"query": [
+								{
+									"key": "user_id",
+									"value": "6"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Refresh Token",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{access_token}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMVwvXC9hcGlcL3YxXC9sb2dpbiIsImlhdCI6MTYxODQ4NDUzOCwiZXhwIjoxNjU0NDg0NTM4LCJuYmYiOjE2MTg0ODQ1MzgsImp0aSI6IlZQQ1YyUk1EbEtrc01UckIiLCJzdWIiOjEsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.tKluPPTa1UHApUA53E37I04a_i8zBjpgsRMfH1aNiPs",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/v1/token-refresh",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"token-refresh"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "forget-password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n     \"email\":\"ahabib55@bs-23.net\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/forgot/password",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"forgot",
+								"password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "switch_account",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{access_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n     \"account_type\":2\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/switch-account",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"switch-account"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "password-verify",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n     \"token\":\"AWxXBSNxkxWCbYwLrIkhX2q4gQEOfeLAOreFPzXsMvIDhkonWW4PrUfjtaNQ\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/forgot/password-verify",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"forgot",
+								"password-verify"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "password-update",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n     \"email\":\"ahabib55@bs-23.net\",\n     \"token\":\"AWxXBSNxkxWCbYwLrIkhX2q4gQEOfeLAOreFPzXsMvIDhkonWW4PrUfjtaNQ\",\n     \"password\":\"123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/forgot/password-update",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"forgot",
+								"password-update"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "candidate information",
+			"item": [
+				{
+					"name": "Fetch Candidate All info",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/v1/candidate/image-gallery",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"candidate",
+								"image-gallery"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Fetch Candidate Gallery Images",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/v1/candidate/info/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"candidate",
+								"info",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Fetch Candidate personal information ",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{access_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/candidate/personal-info/2",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"candidate",
+								"personal-info",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "personal information",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{access_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"dob\": \"2000-04-21\",\n  \"mobile_number\": \"01714999720\",\n  \"mobile_country_code\": \"BD\",\n  \"per_telephone_no\": \"8802134567\",\n  \"per_gender\": \"1\",\n  \"per_height\": \"5.6\",\n  \"per_employment_status\": \"employed\",\n  \"per_education_level_id\": \"2\",\n  \"per_religion_id\": \"1\",\n  \"per_ethnicity\": \"British-Bangladeshi\",\n  \"per_mother_tongue\": \"English\",\n  \"per_nationality\": \"20\",\n  \"per_country_of_birth\": \"20\",\n  \"per_current_residence\": \"20\",\n  \"per_address\": \"Bangladesh\",\n  \"per_marital_status\": \"single\",\n  \"per_have_children\": \"0\",\n  \"per_currently_living_with\": \"Parents\",\n  \"per_willing_to_relocate\": \"1\",\n  \"per_smoker\": \"0\",\n  \"per_language_speak\": \"Enlish, bangla\",\n  \"per_hobbies_interests\": \"\",\n  \"per_food_cuisine_like\": \"\",\n  \"per_things_enjoy\": \"\",\n  \"per_thankfull_for\": \"\",\n  \"per_about\": \"\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/candidate/personal-info/2",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"candidate",
+								"personal-info",
+								"2"
+							]
+						},
+						"description": "Fillabel fileds : \n\n'pre_partner_age_min',\n'pre_partner_age_max',\n'pre_height_min',\n'pre_height_max',\n'pre_consider_rate',\n'pre_strength_of_character_rate',\n'pre_look_and_appearance_rate',\n'pre_religiosity_or_faith_rate',\n'pre_manners_socialskill_ethics_rate',\n'pre_ethnicities',\n'pre_nationality',\n'pre_study_level_id',\n'pre_employment_status',\n'pre_occupation',\n'pre_other_preference',\n\"pre_description\","
+					},
+					"response": []
+				},
+				{
+					"name": "createCandidate (Screen Name)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{access_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"first_name\":\"Ahsan\",\n    \"last_name\":\"Habib\",\n    \"screen_name\":\"ahsanHabib1ss\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/candidate/create",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"candidate",
+								"create"
+							]
+						},
+						"description": "Fillabel fileds : \n\n'pre_partner_age_min',\n'pre_partner_age_max',\n'pre_height_min',\n'pre_height_max',\n'pre_consider_rate',\n'pre_strength_of_character_rate',\n'pre_look_and_appearance_rate',\n'pre_religiosity_or_faith_rate',\n'pre_manners_socialskill_ethics_rate',\n'pre_ethnicities',\n'pre_nationality',\n'pre_study_level_id',\n'pre_employment_status',\n'pre_occupation',\n'pre_other_preference',\n\"pre_description\","
+					},
+					"response": []
+				},
+				{
+					"name": "fetch Candidate Preference info",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/v1/candidate/preference/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"candidate",
+								"preference",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "fetch Candidate Preference info",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{access_token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/api/candidate/preference/1",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"candidate",
+										"preference",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.17.8"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.3.27"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 22 Apr 2021 19:25:34 GMT"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"SUCCESS\",\n    \"status_code\": 200,\n    \"message\": \"Information fetched Successfully!\",\n    \"data\": {\n        \"id\": 2,\n        \"user_id\": 1,\n        \"first_name\": \"Sahed\",\n        \"last_name\": \"Moral\",\n        \"screen_name\": null,\n        \"pre_partner_age_min\": 2,\n        \"pre_partner_age_max\": 100,\n        \"pre_height_min\": 2,\n        \"pre_height_max\": 4,\n        \"pre_has_country_allow_preference\": true,\n        \"preferred_countries\": [\n            {\n                \"id\": 23,\n                \"code\": \"BE\",\n                \"name\": \"Belgium\",\n                \"status\": 1,\n                \"created_at\": null,\n                \"updated_at\": null,\n                \"pivot\": {\n                    \"user_id\": 1,\n                    \"candidate_pre_country_id\": 23\n                }\n            },\n            {\n                \"id\": 33,\n                \"code\": \"IO\",\n                \"name\": \"British lndian Ocean Territory\",\n                \"status\": 1,\n                \"created_at\": null,\n                \"updated_at\": null,\n                \"pivot\": {\n                    \"user_id\": 1,\n                    \"candidate_pre_country_id\": 33\n                }\n            }\n        ],\n        \"preferred_cities\": [\n            {\n                \"id\": 1,\n                \"country_id\": 23,\n                \"name\": \"Dhaka\",\n                \"status\": 1,\n                \"created_at\": null,\n                \"updated_at\": null,\n                \"pivot\": {\n                    \"user_id\": 1,\n                    \"city_id\": 1\n                }\n            }\n        ],\n        \"pre_has_country_disallow_preference\": true,\n        \"bloked_countries\": [\n            {\n                \"id\": 101,\n                \"code\": \"ID\",\n                \"name\": \"Indonesia\",\n                \"status\": 1,\n                \"created_at\": null,\n                \"updated_at\": null,\n                \"pivot\": {\n                    \"user_id\": 1,\n                    \"candidate_pre_country_id\": 101\n                }\n            },\n            {\n                \"id\": 102,\n                \"code\": \"IR\",\n                \"name\": \"Iran (Islamic Republic of)\",\n                \"status\": 1,\n                \"created_at\": null,\n                \"updated_at\": null,\n                \"pivot\": {\n                    \"user_id\": 1,\n                    \"candidate_pre_country_id\": 102\n                }\n            }\n        ],\n        \"blocked_cities\": [\n            {\n                \"id\": 1,\n                \"country_id\": 23,\n                \"name\": \"Dhaka\",\n                \"status\": 1,\n                \"created_at\": null,\n                \"updated_at\": null,\n                \"pivot\": {\n                    \"user_id\": 1,\n                    \"city_id\": 1\n                }\n            }\n        ],\n        \"preferred_nationality\": [\n            {\n                \"id\": 23,\n                \"code\": \"BE\",\n                \"name\": \"Belgium\",\n                \"status\": 1,\n                \"created_at\": null,\n                \"updated_at\": null,\n                \"pivot\": {\n                    \"user_id\": 1,\n                    \"candidate_pre_country_id\": 23\n                }\n            },\n            {\n                \"id\": 33,\n                \"code\": \"IO\",\n                \"name\": \"British lndian Ocean Territory\",\n                \"status\": 1,\n                \"created_at\": null,\n                \"updated_at\": null,\n                \"pivot\": {\n                    \"user_id\": 1,\n                    \"candidate_pre_country_id\": 33\n                }\n            }\n        ],\n        \"pre_partner_religion_id\": 1,\n        \"pre_ethnicities\": \"British Bangladeshi\",\n        \"pre_study_level_id\": 1,\n        \"pre_employment_status\": null,\n        \"pre_occupation\": null,\n        \"pre_preferred_divorcee\": 0,\n        \"pre_preferred_divorcee_child\": 0,\n        \"pre_other_preference\": \"Hi\",\n        \"pre_description\": \"Hello\",\n        \"pre_pros_part_status\": 3,\n        \"pre_strength_of_character_rate\": 3,\n        \"pre_strength_of_character_rate_string\": \"Important\",\n        \"pre_look_and_appearance_rate\": 5,\n        \"pre_look_and_appearance_rate_string\": \"Extremely Important\",\n        \"pre_religiosity_or_faith_rate\": 5,\n        \"pre_religiosity_or_faith_rate_string\": \"Extremely Important\",\n        \"pre_manners_socialskill_ethics_rate\": 5,\n        \"pre_manners_socialskill_ethics_rate_string\": \"Extremely Important\",\n        \"pre_emotional_maturity_rate\": 5,\n        \"pre_emotional_maturity_rate_string\": \"Extremely Important\",\n        \"pre_good_listener_rate\": 5,\n        \"pre_good_listener_rate_string\": \"Extremely Important\",\n        \"pre_good_talker_rate\": 5,\n        \"pre_good_talker_rate_string\": \"Extremely Important\",\n        \"pre_wiling_to_learn_rate\": 3,\n        \"pre_wiling_to_learn_rate_string\": \"Important\",\n        \"pre_family_social_status_rate\": 2,\n        \"pre_family_social_status_rate_string\": \"Quite Important\",\n        \"pre_employment_wealth_rate\": 4,\n        \"pre_employment_wealth_rate_string\": \"Very Important\",\n        \"pre_education_rate\": 1,\n        \"pre_education_rate_string\": \"Not Important\",\n        \"pre_things_important_status\": 3\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Candidate Preference info",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "{{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"pre_partner_age_min\":1,\n    \"pre_partner_age_max\":99,\n    \"pre_height_min\":2,\n    \"pre_height_max\":4,\n    \"pre_has_country_allow_preference\":1,\n    \"pre_countries[0]\":33,\n    \"pre_countries[1]\":23,\n    \"pre_cities[0]\":1,\n    \"pre_nationality[0]\":23,\n    \"pre_nationality[1]\":33,\n    \"pre_has_country_disallow_preference\":1,\n    \"pre_disallow_countries[0]\":101,\n    \"pre_disallow_countries[1]\":102,\n    \"pre_disallow_cities[0]\":1,\n    \"pre_partner_religions\":\"1,2,3,\", // Coma Separted List of relagions id or name\n    \"pre_ethnicities\":\"British Bangladeshi\",// Coma Separted List of ethnicities\n    \"pre_study_level_id\":1,\n    \"pre_employment_status\":\"Unemployed\",\n    \"pre_occupation\":\"Doctor\",\n    \"pre_preferred_divorcee\":0,\n    \"pre_preferred_divorcee_child\":0,\n    \"pre_other_preference\":\"Hi\",\n    \"pre_description\":\"Hello\",\n    \"pre_pros_part_status\":3,\n    \"pre_strength_of_character_rate\":3,\n    \"pre_look_and_appearance_rate\":5,\n    \"pre_religiosity_or_faith_rate\":5,\n    \"pre_manners_socialskill_ethics_rate\":5,\n    \"pre_emotional_maturity_rate\":5,\n    \"pre_good_listener_rate\":5,\n    \"pre_good_talker_rate\":5,\n    \"pre_wiling_to_learn_rate\":3,\n    \"pre_family_social_status_rate\":2,\n    \"pre_employment_wealth_rate\":4,\n    \"pre_education_rate\":1,\n    \"pre_things_important_status\":3\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/candidate/preference",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"candidate",
+								"preference"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "fetch Family info",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/v1/candidate/family-info?uid=1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"candidate",
+								"family-info"
+							],
+							"query": [
+								{
+									"key": "uid",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Family info",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{access_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "uid",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "father_name",
+									"value": "MD: Solaiman",
+									"type": "text"
+								},
+								{
+									"key": "father_profession",
+									"value": "Farmer",
+									"type": "text"
+								},
+								{
+									"key": "mother_name",
+									"value": "Marzia begum",
+									"type": "text"
+								},
+								{
+									"key": "mother_profession",
+									"value": "House wife",
+									"type": "text"
+								},
+								{
+									"key": "siblings_desc",
+									"value": "Elder Brother : expertise",
+									"type": "text"
+								},
+								{
+									"key": "country_of_origin",
+									"value": "Bangladesh",
+									"type": "text"
+								},
+								{
+									"key": "family_info",
+									"value": "Father, Mother, 3 Sisters, 3 Brothers",
+									"type": "text"
+								},
+								{
+									"key": "is_publish",
+									"value": " 1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/candidate/family-info",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"candidate",
+								"family-info"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Fetch Candidae Images",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/v1/candidate/image-upload",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"candidate",
+								"image-upload"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Upload Candidae Images",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "{{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "per_avatar_url",
+									"type": "file",
+									"src": []
+								},
+								{
+									"key": "per_main_image_url",
+									"type": "file",
+									"src": []
+								},
+								{
+									"key": "image[0][image]",
+									"type": "file",
+									"src": []
+								},
+								{
+									"key": "image[0][type]",
+									"value": "2",
+									"description": "1=>avatar,2=>Main image, 3-8 => Additional Image 3-8",
+									"type": "text"
+								},
+								{
+									"key": "image[0][visibility]",
+									"value": "4",
+									"description": "1=>only me,2=>My team, 3=>connected team, 4 => everyone",
+									"type": "text"
+								},
+								{
+									"key": "anybody_can_see",
+									"value": "0",
+									"description": "0=No,1=Yes",
+									"type": "text"
+								},
+								{
+									"key": "only_team_can_see",
+									"value": "1",
+									"description": "0=No,1=Yes",
+									"type": "text"
+								},
+								{
+									"key": "team_connection_can_see",
+									"value": "0",
+									"description": "0=No,1=Yes",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/candidate/image-upload",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"candidate",
+								"image-upload"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Candidae Image",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "{{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "per_avatar_url",
+									"type": "file",
+									"src": []
+								},
+								{
+									"key": "per_main_image_url",
+									"type": "file",
+									"src": []
+								},
+								{
+									"key": "image[0][id]",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "image[0][image]",
+									"type": "file",
+									"src": "/home/habib/Downloads/Picture/BeautyPlusMe_20180727225755_save.jpg"
+								},
+								{
+									"key": "image[0][type]",
+									"value": "2",
+									"description": "1=>avatar,2=>Main image, 3-8 => Additional Image 3-8",
+									"type": "text"
+								},
+								{
+									"key": "image[0][visibility]",
+									"value": "4",
+									"description": "1=>only me,2=>My team, 3=>connected team, 4 => everyone",
+									"type": "text"
+								},
+								{
+									"key": "anybody_can_see",
+									"value": "0",
+									"type": "text"
+								},
+								{
+									"key": "only_team_can_see",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "team_connection_can_see",
+									"value": "0",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/candidate/image-upload/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"candidate",
+								"image-upload",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Candidae Image",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "{{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "image",
+									"type": "file",
+									"src": [],
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/candidate/image-upload/19",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"candidate",
+								"image-upload",
+								"19"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "candidate information (habib)",
+			"item": [
+				{
+					"name": "Preference",
+					"item": [
+						{
+							"name": "1 candidate PreferenceInfo about",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "{{access_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\"pre_partner_age_min\":3,\n\"pre_partner_age_max\":60,\n\"pre_height_min\":5,\n\"pre_height_max\":5,\n\"pre_has_country_allow_preference\":true,\n\"pre_partner_comes_from\":[{\"country\":20,\"city\":2},{\"country\":21,\"city\":1}],\n\"pre_has_country_disallow_preference\":false,\n\"pre_disallow_preference\":[{\"country\":20,\"city\":1},{\"country\":21,\"city\":1}],\n\"pre_partner_religions\":\"1,2,3\",\n\"pre_nationality\": [{\"country\":20,\"city\":2},{\"country\":21,\"city\":1}],\n\"pre_ethnicities\":\"British Bangladeshi\",\n\"pre_study_level_id\":1,\n\"pre_employment_status\":\"Unemployed\",\n\"pre_occupation\":\"Doctor\",\n\"pre_preferred_divorcee\":0,\n\"pre_preferred_divorcee_child\":0,\n\"pre_other_preference\":\"Hi\",\n\"pre_description\":\"Hello\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/v1/candidate/preference-about",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"candidate",
+										"preference-about"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "1 candidate PreferenceInfo rating",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "{{access_token}}"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "pre_pros_part_status",
+											"value": "3",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "pre_strength_of_character_rate",
+											"value": "3",
+											"type": "text"
+										},
+										{
+											"key": "pre_look_and_appearance_rate",
+											"value": "5",
+											"type": "text"
+										},
+										{
+											"key": "pre_religiosity_or_faith_rate",
+											"value": "5",
+											"type": "text"
+										},
+										{
+											"key": "pre_manners_socialskill_ethics_rate",
+											"value": "5",
+											"type": "text"
+										},
+										{
+											"key": "pre_emotional_maturity_rate",
+											"value": "5",
+											"type": "text"
+										},
+										{
+											"key": "pre_good_listener_rate",
+											"value": "5",
+											"type": "text"
+										},
+										{
+											"key": "pre_good_talker_rate",
+											"value": "5",
+											"type": "text"
+										},
+										{
+											"key": "pre_wiling_to_learn_rate",
+											"value": "3",
+											"type": "text"
+										},
+										{
+											"key": "pre_family_social_status_rate",
+											"value": "2",
+											"type": "text"
+										},
+										{
+											"key": "pre_employment_wealth_rate",
+											"value": "4",
+											"type": "text"
+										},
+										{
+											"key": "pre_education_rate",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "pre_things_important_status",
+											"value": "3",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/api/v1/candidate/preference-rating",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"candidate",
+										"preference-rating"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "fetch Candidate Preference info",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{access_token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/api/v1/candidate/preference/1",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"candidate",
+										"preference",
+										"1"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "fetch Candidate Preference info",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "{{access_token}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{base_url}}/api/candidate/preference/1",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"api",
+												"candidate",
+												"preference",
+												"1"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Server",
+											"value": "nginx/1.17.8"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/7.3.27"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 22 Apr 2021 19:25:34 GMT"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "58"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"status\": \"SUCCESS\",\n    \"status_code\": 200,\n    \"message\": \"Information fetched Successfully!\",\n    \"data\": {\n        \"id\": 2,\n        \"user_id\": 1,\n        \"first_name\": \"Sahed\",\n        \"last_name\": \"Moral\",\n        \"screen_name\": null,\n        \"pre_partner_age_min\": 2,\n        \"pre_partner_age_max\": 100,\n        \"pre_height_min\": 2,\n        \"pre_height_max\": 4,\n        \"pre_has_country_allow_preference\": true,\n        \"preferred_countries\": [\n            {\n                \"id\": 23,\n                \"code\": \"BE\",\n                \"name\": \"Belgium\",\n                \"status\": 1,\n                \"created_at\": null,\n                \"updated_at\": null,\n                \"pivot\": {\n                    \"user_id\": 1,\n                    \"candidate_pre_country_id\": 23\n                }\n            },\n            {\n                \"id\": 33,\n                \"code\": \"IO\",\n                \"name\": \"British lndian Ocean Territory\",\n                \"status\": 1,\n                \"created_at\": null,\n                \"updated_at\": null,\n                \"pivot\": {\n                    \"user_id\": 1,\n                    \"candidate_pre_country_id\": 33\n                }\n            }\n        ],\n        \"preferred_cities\": [\n            {\n                \"id\": 1,\n                \"country_id\": 23,\n                \"name\": \"Dhaka\",\n                \"status\": 1,\n                \"created_at\": null,\n                \"updated_at\": null,\n                \"pivot\": {\n                    \"user_id\": 1,\n                    \"city_id\": 1\n                }\n            }\n        ],\n        \"pre_has_country_disallow_preference\": true,\n        \"bloked_countries\": [\n            {\n                \"id\": 101,\n                \"code\": \"ID\",\n                \"name\": \"Indonesia\",\n                \"status\": 1,\n                \"created_at\": null,\n                \"updated_at\": null,\n                \"pivot\": {\n                    \"user_id\": 1,\n                    \"candidate_pre_country_id\": 101\n                }\n            },\n            {\n                \"id\": 102,\n                \"code\": \"IR\",\n                \"name\": \"Iran (Islamic Republic of)\",\n                \"status\": 1,\n                \"created_at\": null,\n                \"updated_at\": null,\n                \"pivot\": {\n                    \"user_id\": 1,\n                    \"candidate_pre_country_id\": 102\n                }\n            }\n        ],\n        \"blocked_cities\": [\n            {\n                \"id\": 1,\n                \"country_id\": 23,\n                \"name\": \"Dhaka\",\n                \"status\": 1,\n                \"created_at\": null,\n                \"updated_at\": null,\n                \"pivot\": {\n                    \"user_id\": 1,\n                    \"city_id\": 1\n                }\n            }\n        ],\n        \"preferred_nationality\": [\n            {\n                \"id\": 23,\n                \"code\": \"BE\",\n                \"name\": \"Belgium\",\n                \"status\": 1,\n                \"created_at\": null,\n                \"updated_at\": null,\n                \"pivot\": {\n                    \"user_id\": 1,\n                    \"candidate_pre_country_id\": 23\n                }\n            },\n            {\n                \"id\": 33,\n                \"code\": \"IO\",\n                \"name\": \"British lndian Ocean Territory\",\n                \"status\": 1,\n                \"created_at\": null,\n                \"updated_at\": null,\n                \"pivot\": {\n                    \"user_id\": 1,\n                    \"candidate_pre_country_id\": 33\n                }\n            }\n        ],\n        \"pre_partner_religion_id\": 1,\n        \"pre_ethnicities\": \"British Bangladeshi\",\n        \"pre_study_level_id\": 1,\n        \"pre_employment_status\": null,\n        \"pre_occupation\": null,\n        \"pre_preferred_divorcee\": 0,\n        \"pre_preferred_divorcee_child\": 0,\n        \"pre_other_preference\": \"Hi\",\n        \"pre_description\": \"Hello\",\n        \"pre_pros_part_status\": 3,\n        \"pre_strength_of_character_rate\": 3,\n        \"pre_strength_of_character_rate_string\": \"Important\",\n        \"pre_look_and_appearance_rate\": 5,\n        \"pre_look_and_appearance_rate_string\": \"Extremely Important\",\n        \"pre_religiosity_or_faith_rate\": 5,\n        \"pre_religiosity_or_faith_rate_string\": \"Extremely Important\",\n        \"pre_manners_socialskill_ethics_rate\": 5,\n        \"pre_manners_socialskill_ethics_rate_string\": \"Extremely Important\",\n        \"pre_emotional_maturity_rate\": 5,\n        \"pre_emotional_maturity_rate_string\": \"Extremely Important\",\n        \"pre_good_listener_rate\": 5,\n        \"pre_good_listener_rate_string\": \"Extremely Important\",\n        \"pre_good_talker_rate\": 5,\n        \"pre_good_talker_rate_string\": \"Extremely Important\",\n        \"pre_wiling_to_learn_rate\": 3,\n        \"pre_wiling_to_learn_rate_string\": \"Important\",\n        \"pre_family_social_status_rate\": 2,\n        \"pre_family_social_status_rate_string\": \"Quite Important\",\n        \"pre_employment_wealth_rate\": 4,\n        \"pre_employment_wealth_rate_string\": \"Very Important\",\n        \"pre_education_rate\": 1,\n        \"pre_education_rate_string\": \"Not Important\",\n        \"pre_things_important_status\": 3\n    }\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "personal",
+					"item": [
+						{
+							"name": "2 candidate Personal essentialInformation",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "{{access_token}}"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "dob",
+											"value": "2000-01-17",
+											"type": "text"
+										},
+										{
+											"key": "per_gender",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "per_height",
+											"value": "5.7",
+											"type": "text"
+										},
+										{
+											"key": "per_employment_status",
+											"value": "employed",
+											"type": "text"
+										},
+										{
+											"key": "per_occupation",
+											"value": "Engineer",
+											"type": "text"
+										},
+										{
+											"key": "per_education_level_id",
+											"value": "5",
+											"type": "text"
+										},
+										{
+											"key": "per_religion_id",
+											"value": "19",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/api/v1/candidate/personal-essentialInformation",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"candidate",
+										"personal-essentialInformation"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "2 candidate Personal general formation",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "{{access_token}}"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "per_ethnicity",
+											"value": "British-Bangladeshi",
+											"type": "text"
+										},
+										{
+											"key": "per_mother_tongue",
+											"value": "English",
+											"type": "text"
+										},
+										{
+											"key": "per_nationality",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "per_country_of_birth",
+											"value": "20",
+											"type": "text"
+										},
+										{
+											"key": "per_health_condition",
+											"value": "nothing ",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/api/v1/candidate/personal-generalinformation",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"candidate",
+										"personal-generalinformation"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "2 candidate Personal contact information",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "{{access_token}}"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "per_email",
+											"value": "ahabib@bs-23.net",
+											"type": "text"
+										},
+										{
+											"key": "per_current_residence_country",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "per_current_residence_city",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "per_permanent_country",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "per_permanent_city",
+											"value": "1 ",
+											"type": "text"
+										},
+										{
+											"key": "per_county",
+											"value": "1sdasd",
+											"type": "text"
+										},
+										{
+											"key": "per_permanent_post_code",
+											"value": "1212",
+											"type": "text"
+										},
+										{
+											"key": "per_permanent_address",
+											"value": "azwersdgdfgd",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/api/v1/candidate/personal-cotactinformation",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"candidate",
+										"personal-cotactinformation"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "2 candidate Personal personal-more-about",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "{{access_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"per_marital_status\": \"single\",\n  \"per_have_children\":[{\n      \"type\":true,\n      \"count\":1,\n      \"age\":10\n  }],\n  \"per_currently_living_with\": \"Parents\",\n  \"per_willing_to_relocate\": \"1\",\n  \"per_smoker\": \"0\",\n  \"per_language_speak\": \"Enlish, bangla\",\n  \"per_hobbies_interests\": \"\",\n  \"per_food_cuisine_like\": \"\",\n  \"per_things_enjoy\": \"\",\n  \"per_thankfull_for\": \"\",\n  \"per_about\": \"\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/v1/candidate/personal-more-about",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"candidate",
+										"personal-more-about"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get personal information",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{access_token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "{{base_url}}/api/v1/candidate/personal-info",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"candidate",
+										"personal-info"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "getCandidateAllinfo",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/v1/candidate/info/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"candidate",
+								"info",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "personal information",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{access_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"dob\": \"2000-04-21\",\n  \"mobile_number\": \"01714999720\",\n  \"mobile_country_code\": \"BD\",\n  \"per_telephone_no\": \"8802134567\",\n  \"per_gender\": \"1\",\n  \"per_height\": \"5.6\",\n  \"per_employment_status\": \"employed\",\n  \"per_education_level_id\": \"2\",\n  \"per_religion_id\": \"1\",\n  \"per_ethnicity\": \"British-Bangladeshi\",\n  \"per_mother_tongue\": \"English\",\n  \"per_nationality\": \"20\",\n  \"per_country_of_birth\": \"20\",\n  \"per_current_residence\": \"20\",\n  \"per_address\": \"Bangladesh\",\n  \"per_marital_status\": \"single\",\n  \"per_children\": 0,\n  \"per_currently_living_with\": \"Parents\",\n  \"per_willing_to_relocate\": \"1\",\n  \"per_smoker\": \"0\",\n  \"per_language_speak\": \"Enlish, bangla\",\n  \"per_hobbies_interests\": \"\",\n  \"per_food_cuisine_like\": \"\",\n  \"per_things_enjoy\": \"\",\n  \"per_thankfull_for\": \"\",\n  \"per_about\": \"\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/candidate/personal-info/4",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"candidate",
+								"personal-info",
+								"4"
+							]
+						},
+						"description": "Fillabel fileds : \n\n'pre_partner_age_min',\n'pre_partner_age_max',\n'pre_height_min',\n'pre_height_max',\n'pre_consider_rate',\n'pre_strength_of_character_rate',\n'pre_look_and_appearance_rate',\n'pre_religiosity_or_faith_rate',\n'pre_manners_socialskill_ethics_rate',\n'pre_ethnicities',\n'pre_nationality',\n'pre_study_level_id',\n'pre_employment_status',\n'pre_occupation',\n'pre_other_preference',\n\"pre_description\","
+					},
+					"response": []
+				},
+				{
+					"name": "createCandidate (Screen Name)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{access_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"first_name\":\"Ahsan\",\n    \"last_name\":\"Habib\",\n    \"screen_name\":\"ahsanHabib1ss\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/candidate/create",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"candidate",
+								"create"
+							]
+						},
+						"description": "Fillabel fileds : \n\n'pre_partner_age_min',\n'pre_partner_age_max',\n'pre_height_min',\n'pre_height_max',\n'pre_consider_rate',\n'pre_strength_of_character_rate',\n'pre_look_and_appearance_rate',\n'pre_religiosity_or_faith_rate',\n'pre_manners_socialskill_ethics_rate',\n'pre_ethnicities',\n'pre_nationality',\n'pre_study_level_id',\n'pre_employment_status',\n'pre_occupation',\n'pre_other_preference',\n\"pre_description\","
+					},
+					"response": []
+				},
+				{
+					"name": "candidatePreferenceInfo",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "{{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "pre_partner_age_min",
+									"value": "3",
+									"type": "text"
+								},
+								{
+									"key": "pre_partner_age_max",
+									"value": "100",
+									"type": "text"
+								},
+								{
+									"key": "pre_height_min",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "pre_height_max",
+									"value": "4",
+									"type": "text"
+								},
+								{
+									"key": "pre_has_country_allow_preference",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "pre_countries[0]",
+									"value": "262",
+									"type": "text"
+								},
+								{
+									"key": "pre_countries[1]",
+									"value": "262",
+									"type": "text"
+								},
+								{
+									"key": "pre_cities[0]",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "pre_nationality[0]",
+									"value": "23",
+									"type": "text"
+								},
+								{
+									"key": "pre_nationality[1]",
+									"value": "33",
+									"type": "text"
+								},
+								{
+									"key": "pre_has_country_disallow_preference",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "pre_disallow_countries[0]",
+									"value": "101",
+									"type": "text"
+								},
+								{
+									"key": "pre_disallow_countries[1]",
+									"value": "102",
+									"type": "text"
+								},
+								{
+									"key": "pre_disallow_cities[0]",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "pre_partner_religions",
+									"value": "1,2,3",
+									"type": "text"
+								},
+								{
+									"key": "pre_ethnicities",
+									"value": "British Bangladeshi\",// Coma Separted List of ethnicitie",
+									"type": "text"
+								},
+								{
+									"key": "pre_study_level_id",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "pre_employment_status",
+									"value": "Unemployed",
+									"type": "text"
+								},
+								{
+									"key": "pre_occupation",
+									"value": "Doctor",
+									"type": "text"
+								},
+								{
+									"key": "pre_preferred_divorcee",
+									"value": "0",
+									"type": "text"
+								},
+								{
+									"key": "pre_preferred_divorcee_child",
+									"value": "0",
+									"type": "text"
+								},
+								{
+									"key": "pre_other_preference",
+									"value": "Hi",
+									"type": "text"
+								},
+								{
+									"key": "pre_description",
+									"value": "Hello",
+									"type": "text"
+								},
+								{
+									"key": "pre_pros_part_status",
+									"value": "3",
+									"type": "text"
+								},
+								{
+									"key": "pre_strength_of_character_rate",
+									"value": "3",
+									"type": "text"
+								},
+								{
+									"key": "pre_look_and_appearance_rate",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "pre_religiosity_or_faith_rate",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "pre_manners_socialskill_ethics_rate",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "pre_emotional_maturity_rate",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "pre_good_listener_rate",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "pre_good_talker_rate",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "pre_wiling_to_learn_rate",
+									"value": "3",
+									"type": "text"
+								},
+								{
+									"key": "pre_family_social_status_rate",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "pre_employment_wealth_rate",
+									"value": "4",
+									"type": "text"
+								},
+								{
+									"key": "pre_education_rate",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "pre_things_important_status",
+									"value": "3",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/candidate/preference-info",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"candidate",
+								"preference-info"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "fetch Family info",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/v1/candidate/family-info?uid=1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"candidate",
+								"family-info"
+							],
+							"query": [
+								{
+									"key": "uid",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Family info",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{access_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "uid",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "father_name",
+									"value": "MD: Solaiman",
+									"type": "text"
+								},
+								{
+									"key": "father_profession",
+									"value": "Farmer",
+									"type": "text"
+								},
+								{
+									"key": "mother_name",
+									"value": "Marzia begum",
+									"type": "text"
+								},
+								{
+									"key": "mother_profession",
+									"value": "House wife",
+									"type": "text"
+								},
+								{
+									"key": "siblings_desc",
+									"value": "Elder Brother : expertise",
+									"type": "text"
+								},
+								{
+									"key": "country_of_origin",
+									"value": "Bangladesh",
+									"type": "text"
+								},
+								{
+									"key": "family_info",
+									"value": "Father, Mother, 3 Sisters, 3 Brothers",
+									"type": "text"
+								},
+								{
+									"key": "is_publish",
+									"value": " 1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/candidate/family-info",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"candidate",
+								"family-info"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Fetch Candidae Images",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/v1/candidate/image-upload",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"candidate",
+								"image-upload"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Upload Candidae Images",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "{{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "per_avatar_url",
+									"type": "file",
+									"src": "/D:/playground/matrimonial-assist/frontend/src/assets/banner-bg.jpg"
+								},
+								{
+									"key": "per_main_image_url",
+									"type": "file",
+									"src": "/D:/playground/matrimonial-assist/frontend/src/assets/candidate.png"
+								},
+								{
+									"key": "image[0][image]",
+									"type": "file",
+									"src": "/D:/playground/matrimonial-assist/frontend/src/assets/mike.jpg"
+								},
+								{
+									"key": "image[0][type]",
+									"value": "2",
+									"description": "1=>avatar,2=>Main image, 3-8 => Additional Image 3-8",
+									"type": "text"
+								},
+								{
+									"key": "image[0][visibility]",
+									"value": "4",
+									"description": "1=>only me,2=>My team, 3=>connected team, 4 => everyone",
+									"type": "text"
+								},
+								{
+									"key": "anybody_can_see",
+									"value": "0",
+									"description": "0=No,1=Yes",
+									"type": "text"
+								},
+								{
+									"key": "only_team_can_see",
+									"value": "1",
+									"description": "0=No,1=Yes",
+									"type": "text"
+								},
+								{
+									"key": "team_connection_can_see",
+									"value": "0",
+									"description": "0=No,1=Yes",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/candidate/image-upload",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"candidate",
+								"image-upload"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Candidae Image",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "{{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "per_avatar_url",
+									"type": "file",
+									"src": []
+								},
+								{
+									"key": "per_main_image_url",
+									"type": "file",
+									"src": []
+								},
+								{
+									"key": "image[0][id]",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "image[0][image]",
+									"type": "file",
+									"src": "/home/habib/Downloads/Picture/BeautyPlusMe_20180727225755_save.jpg"
+								},
+								{
+									"key": "image[0][type]",
+									"value": "2",
+									"description": "1=>avatar,2=>Main image, 3-8 => Additional Image 3-8",
+									"type": "text"
+								},
+								{
+									"key": "image[0][visibility]",
+									"value": "4",
+									"description": "1=>only me,2=>My team, 3=>connected team, 4 => everyone",
+									"type": "text"
+								},
+								{
+									"key": "anybody_can_see",
+									"value": "0",
+									"type": "text"
+								},
+								{
+									"key": "only_team_can_see",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "team_connection_can_see",
+									"value": "0",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/candidate/image-update",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"candidate",
+								"image-update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Candidae Image",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "{{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "image",
+									"type": "file",
+									"src": [],
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/candidate/image-upload/19",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"candidate",
+								"image-upload",
+								"19"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "utitlities",
+			"item": [
+				{
+					"name": "Fetch countries",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/v1/utilities/countries",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"utilities",
+								"countries"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Fetch countries",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{access_token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/api/utilities/countries",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"utilities",
+										"countries"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.17.8"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.3.27"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 22 Apr 2021 19:44:36 GMT"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"SUCCESS\",\n    \"status_code\": 200,\n    \"message\": \"Information fetched Successfully!\",\n    \"data\": [\n        {\n            \"id\": 1,\n            \"code\": \"US\",\n            \"name\": \"United States\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 2,\n            \"code\": \"CA\",\n            \"name\": \"Canada\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 3,\n            \"code\": \"AF\",\n            \"name\": \"Afghanistan\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 4,\n            \"code\": \"AL\",\n            \"name\": \"Albania\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 5,\n            \"code\": \"DZ\",\n            \"name\": \"Algeria\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 6,\n            \"code\": \"AS\",\n            \"name\": \"American Samoa\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 7,\n            \"code\": \"AD\",\n            \"name\": \"Andorra\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 8,\n            \"code\": \"AO\",\n            \"name\": \"Angola\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 9,\n            \"code\": \"AI\",\n            \"name\": \"Anguilla\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 10,\n            \"code\": \"AQ\",\n            \"name\": \"Antarctica\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 11,\n            \"code\": \"AG\",\n            \"name\": \"Antigua and/or Barbuda\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 12,\n            \"code\": \"AR\",\n            \"name\": \"Argentina\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 13,\n            \"code\": \"AM\",\n            \"name\": \"Armenia\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 14,\n            \"code\": \"AW\",\n            \"name\": \"Aruba\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 15,\n            \"code\": \"AU\",\n            \"name\": \"Australia\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 16,\n            \"code\": \"AT\",\n            \"name\": \"Austria\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 17,\n            \"code\": \"AZ\",\n            \"name\": \"Azerbaijan\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 18,\n            \"code\": \"BS\",\n            \"name\": \"Bahamas\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 19,\n            \"code\": \"BH\",\n            \"name\": \"Bahrain\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 20,\n            \"code\": \"BD\",\n            \"name\": \"Bangladesh\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 21,\n            \"code\": \"BB\",\n            \"name\": \"Barbados\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 22,\n            \"code\": \"BY\",\n            \"name\": \"Belarus\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 23,\n            \"code\": \"BE\",\n            \"name\": \"Belgium\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 24,\n            \"code\": \"BZ\",\n            \"name\": \"Belize\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 25,\n            \"code\": \"BJ\",\n            \"name\": \"Benin\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 26,\n            \"code\": \"BM\",\n            \"name\": \"Bermuda\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 27,\n            \"code\": \"BT\",\n            \"name\": \"Bhutan\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 28,\n            \"code\": \"BO\",\n            \"name\": \"Bolivia\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 29,\n            \"code\": \"BA\",\n            \"name\": \"Bosnia and Herzegovina\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 30,\n            \"code\": \"BW\",\n            \"name\": \"Botswana\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 31,\n            \"code\": \"BV\",\n            \"name\": \"Bouvet Island\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 32,\n            \"code\": \"BR\",\n            \"name\": \"Brazil\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 33,\n            \"code\": \"IO\",\n            \"name\": \"British lndian Ocean Territory\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 34,\n            \"code\": \"BN\",\n            \"name\": \"Brunei Darussalam\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 35,\n            \"code\": \"BG\",\n            \"name\": \"Bulgaria\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 36,\n            \"code\": \"BF\",\n            \"name\": \"Burkina Faso\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 37,\n            \"code\": \"BI\",\n            \"name\": \"Burundi\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 38,\n            \"code\": \"KH\",\n            \"name\": \"Cambodia\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 39,\n            \"code\": \"CM\",\n            \"name\": \"Cameroon\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 40,\n            \"code\": \"CV\",\n            \"name\": \"Cape Verde\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 41,\n            \"code\": \"KY\",\n            \"name\": \"Cayman Islands\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 42,\n            \"code\": \"CF\",\n            \"name\": \"Central African Republic\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 43,\n            \"code\": \"TD\",\n            \"name\": \"Chad\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 44,\n            \"code\": \"CL\",\n            \"name\": \"Chile\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 45,\n            \"code\": \"CN\",\n            \"name\": \"China\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 46,\n            \"code\": \"CX\",\n            \"name\": \"Christmas Island\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 47,\n            \"code\": \"CC\",\n            \"name\": \"Cocos (Keeling) Islands\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 48,\n            \"code\": \"CO\",\n            \"name\": \"Colombia\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 49,\n            \"code\": \"KM\",\n            \"name\": \"Comoros\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 50,\n            \"code\": \"CG\",\n            \"name\": \"Congo\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 51,\n            \"code\": \"CK\",\n            \"name\": \"Cook Islands\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 52,\n            \"code\": \"CR\",\n            \"name\": \"Costa Rica\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 53,\n            \"code\": \"HR\",\n            \"name\": \"Croatia (Hrvatska)\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 54,\n            \"code\": \"CU\",\n            \"name\": \"Cuba\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 55,\n            \"code\": \"CY\",\n            \"name\": \"Cyprus\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 56,\n            \"code\": \"CZ\",\n            \"name\": \"Czech Republic\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 57,\n            \"code\": \"CD\",\n            \"name\": \"Democratic Republic of Congo\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 58,\n            \"code\": \"DK\",\n            \"name\": \"Denmark\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 59,\n            \"code\": \"DJ\",\n            \"name\": \"Djibouti\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 60,\n            \"code\": \"DM\",\n            \"name\": \"Dominica\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 61,\n            \"code\": \"DO\",\n            \"name\": \"Dominican Republic\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 62,\n            \"code\": \"TP\",\n            \"name\": \"East Timor\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 63,\n            \"code\": \"EC\",\n            \"name\": \"Ecudaor\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 64,\n            \"code\": \"EG\",\n            \"name\": \"Egypt\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 65,\n            \"code\": \"SV\",\n            \"name\": \"El Salvador\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 66,\n            \"code\": \"GQ\",\n            \"name\": \"Equatorial Guinea\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 67,\n            \"code\": \"ER\",\n            \"name\": \"Eritrea\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 68,\n            \"code\": \"EE\",\n            \"name\": \"Estonia\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 69,\n            \"code\": \"ET\",\n            \"name\": \"Ethiopia\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 70,\n            \"code\": \"FK\",\n            \"name\": \"Falkland Islands (Malvinas)\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 71,\n            \"code\": \"FO\",\n            \"name\": \"Faroe Islands\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 72,\n            \"code\": \"FJ\",\n            \"name\": \"Fiji\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 73,\n            \"code\": \"FI\",\n            \"name\": \"Finland\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 74,\n            \"code\": \"FR\",\n            \"name\": \"France\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 75,\n            \"code\": \"FX\",\n            \"name\": \"France, Metropolitan\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 76,\n            \"code\": \"GF\",\n            \"name\": \"French Guiana\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 77,\n            \"code\": \"PF\",\n            \"name\": \"French Polynesia\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 78,\n            \"code\": \"TF\",\n            \"name\": \"French Southern Territories\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 79,\n            \"code\": \"GA\",\n            \"name\": \"Gabon\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 80,\n            \"code\": \"GM\",\n            \"name\": \"Gambia\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 81,\n            \"code\": \"GE\",\n            \"name\": \"Georgia\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 82,\n            \"code\": \"DE\",\n            \"name\": \"Germany\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 83,\n            \"code\": \"GH\",\n            \"name\": \"Ghana\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 84,\n            \"code\": \"GI\",\n            \"name\": \"Gibraltar\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 85,\n            \"code\": \"GR\",\n            \"name\": \"Greece\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 86,\n            \"code\": \"GL\",\n            \"name\": \"Greenland\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 87,\n            \"code\": \"GD\",\n            \"name\": \"Grenada\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 88,\n            \"code\": \"GP\",\n            \"name\": \"Guadeloupe\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 89,\n            \"code\": \"GU\",\n            \"name\": \"Guam\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 90,\n            \"code\": \"GT\",\n            \"name\": \"Guatemala\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 91,\n            \"code\": \"GN\",\n            \"name\": \"Guinea\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 92,\n            \"code\": \"GW\",\n            \"name\": \"Guinea-Bissau\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 93,\n            \"code\": \"GY\",\n            \"name\": \"Guyana\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 94,\n            \"code\": \"HT\",\n            \"name\": \"Haiti\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 95,\n            \"code\": \"HM\",\n            \"name\": \"Heard and Mc Donald Islands\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 96,\n            \"code\": \"HN\",\n            \"name\": \"Honduras\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 97,\n            \"code\": \"HK\",\n            \"name\": \"Hong Kong\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 98,\n            \"code\": \"HU\",\n            \"name\": \"Hungary\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 99,\n            \"code\": \"IS\",\n            \"name\": \"Iceland\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 100,\n            \"code\": \"IN\",\n            \"name\": \"India\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 101,\n            \"code\": \"ID\",\n            \"name\": \"Indonesia\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 102,\n            \"code\": \"IR\",\n            \"name\": \"Iran (Islamic Republic of)\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 103,\n            \"code\": \"IQ\",\n            \"name\": \"Iraq\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 104,\n            \"code\": \"IE\",\n            \"name\": \"Ireland\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 105,\n            \"code\": \"IL\",\n            \"name\": \"Israel\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 106,\n            \"code\": \"IT\",\n            \"name\": \"Italy\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 107,\n            \"code\": \"CI\",\n            \"name\": \"Ivory Coast\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 108,\n            \"code\": \"JM\",\n            \"name\": \"Jamaica\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 109,\n            \"code\": \"JP\",\n            \"name\": \"Japan\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 110,\n            \"code\": \"JO\",\n            \"name\": \"Jordan\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 111,\n            \"code\": \"KZ\",\n            \"name\": \"Kazakhstan\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 112,\n            \"code\": \"KE\",\n            \"name\": \"Kenya\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 113,\n            \"code\": \"KI\",\n            \"name\": \"Kiribati\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 114,\n            \"code\": \"KP\",\n            \"name\": \"Korea, Democratic People's Republic of\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 115,\n            \"code\": \"KR\",\n            \"name\": \"Korea, Republic of\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 116,\n            \"code\": \"KW\",\n            \"name\": \"Kuwait\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 117,\n            \"code\": \"KG\",\n            \"name\": \"Kyrgyzstan\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 118,\n            \"code\": \"LA\",\n            \"name\": \"Lao People's Democratic Republic\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 119,\n            \"code\": \"LV\",\n            \"name\": \"Latvia\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 120,\n            \"code\": \"LB\",\n            \"name\": \"Lebanon\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 121,\n            \"code\": \"LS\",\n            \"name\": \"Lesotho\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 122,\n            \"code\": \"LR\",\n            \"name\": \"Liberia\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 123,\n            \"code\": \"LY\",\n            \"name\": \"Libyan Arab Jamahiriya\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 124,\n            \"code\": \"LI\",\n            \"name\": \"Liechtenstein\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 125,\n            \"code\": \"LT\",\n            \"name\": \"Lithuania\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 126,\n            \"code\": \"LU\",\n            \"name\": \"Luxembourg\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 127,\n            \"code\": \"MO\",\n            \"name\": \"Macau\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 128,\n            \"code\": \"MK\",\n            \"name\": \"Macedonia\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 129,\n            \"code\": \"MG\",\n            \"name\": \"Madagascar\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 130,\n            \"code\": \"MW\",\n            \"name\": \"Malawi\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 131,\n            \"code\": \"MY\",\n            \"name\": \"Malaysia\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 132,\n            \"code\": \"MV\",\n            \"name\": \"Maldives\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 133,\n            \"code\": \"ML\",\n            \"name\": \"Mali\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 134,\n            \"code\": \"MT\",\n            \"name\": \"Malta\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 135,\n            \"code\": \"MH\",\n            \"name\": \"Marshall Islands\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 136,\n            \"code\": \"MQ\",\n            \"name\": \"Martinique\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 137,\n            \"code\": \"MR\",\n            \"name\": \"Mauritania\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 138,\n            \"code\": \"MU\",\n            \"name\": \"Mauritius\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 139,\n            \"code\": \"TY\",\n            \"name\": \"Mayotte\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 140,\n            \"code\": \"MX\",\n            \"name\": \"Mexico\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 141,\n            \"code\": \"FM\",\n            \"name\": \"Micronesia, Federated States of\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 142,\n            \"code\": \"MD\",\n            \"name\": \"Moldova, Republic of\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 143,\n            \"code\": \"MC\",\n            \"name\": \"Monaco\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 144,\n            \"code\": \"MN\",\n            \"name\": \"Mongolia\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 145,\n            \"code\": \"MS\",\n            \"name\": \"Montserrat\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 146,\n            \"code\": \"MA\",\n            \"name\": \"Morocco\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 147,\n            \"code\": \"MZ\",\n            \"name\": \"Mozambique\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 148,\n            \"code\": \"MM\",\n            \"name\": \"Myanmar\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 149,\n            \"code\": \"NA\",\n            \"name\": \"Namibia\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 150,\n            \"code\": \"NR\",\n            \"name\": \"Nauru\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 151,\n            \"code\": \"NP\",\n            \"name\": \"Nepal\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 152,\n            \"code\": \"NL\",\n            \"name\": \"Netherlands\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 153,\n            \"code\": \"AN\",\n            \"name\": \"Netherlands Antilles\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 154,\n            \"code\": \"NC\",\n            \"name\": \"New Caledonia\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 155,\n            \"code\": \"NZ\",\n            \"name\": \"New Zealand\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 156,\n            \"code\": \"NI\",\n            \"name\": \"Nicaragua\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 157,\n            \"code\": \"NE\",\n            \"name\": \"Niger\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 158,\n            \"code\": \"NG\",\n            \"name\": \"Nigeria\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 159,\n            \"code\": \"NU\",\n            \"name\": \"Niue\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 160,\n            \"code\": \"NF\",\n            \"name\": \"Norfork Island\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 161,\n            \"code\": \"MP\",\n            \"name\": \"Northern Mariana Islands\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 162,\n            \"code\": \"NO\",\n            \"name\": \"Norway\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 163,\n            \"code\": \"OM\",\n            \"name\": \"Oman\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 164,\n            \"code\": \"PK\",\n            \"name\": \"Pakistan\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 165,\n            \"code\": \"PW\",\n            \"name\": \"Palau\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 166,\n            \"code\": \"PA\",\n            \"name\": \"Panama\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 167,\n            \"code\": \"PG\",\n            \"name\": \"Papua New Guinea\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 168,\n            \"code\": \"PY\",\n            \"name\": \"Paraguay\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 169,\n            \"code\": \"PE\",\n            \"name\": \"Peru\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 170,\n            \"code\": \"PH\",\n            \"name\": \"Philippines\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 171,\n            \"code\": \"PN\",\n            \"name\": \"Pitcairn\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 172,\n            \"code\": \"PL\",\n            \"name\": \"Poland\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 173,\n            \"code\": \"PT\",\n            \"name\": \"Portugal\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 174,\n            \"code\": \"PR\",\n            \"name\": \"Puerto Rico\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 175,\n            \"code\": \"QA\",\n            \"name\": \"Qatar\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 176,\n            \"code\": \"SS\",\n            \"name\": \"Republic of South Sudan\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 177,\n            \"code\": \"RE\",\n            \"name\": \"Reunion\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 178,\n            \"code\": \"RO\",\n            \"name\": \"Romania\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 179,\n            \"code\": \"RU\",\n            \"name\": \"Russian Federation\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 180,\n            \"code\": \"RW\",\n            \"name\": \"Rwanda\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 181,\n            \"code\": \"KN\",\n            \"name\": \"Saint Kitts and Nevis\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 182,\n            \"code\": \"LC\",\n            \"name\": \"Saint Lucia\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 183,\n            \"code\": \"VC\",\n            \"name\": \"Saint Vincent and the Grenadines\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 184,\n            \"code\": \"WS\",\n            \"name\": \"Samoa\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 185,\n            \"code\": \"SM\",\n            \"name\": \"San Marino\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 186,\n            \"code\": \"ST\",\n            \"name\": \"Sao Tome and Principe\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 187,\n            \"code\": \"SA\",\n            \"name\": \"Saudi Arabia\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 188,\n            \"code\": \"SN\",\n            \"name\": \"Senegal\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 189,\n            \"code\": \"RS\",\n            \"name\": \"Serbia\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 190,\n            \"code\": \"SC\",\n            \"name\": \"Seychelles\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 191,\n            \"code\": \"SL\",\n            \"name\": \"Sierra Leone\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 192,\n            \"code\": \"SG\",\n            \"name\": \"Singapore\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 193,\n            \"code\": \"SK\",\n            \"name\": \"Slovakia\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 194,\n            \"code\": \"SI\",\n            \"name\": \"Slovenia\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 195,\n            \"code\": \"SB\",\n            \"name\": \"Solomon Islands\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 196,\n            \"code\": \"SO\",\n            \"name\": \"Somalia\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 197,\n            \"code\": \"ZA\",\n            \"name\": \"South Africa\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 198,\n            \"code\": \"GS\",\n            \"name\": \"South Georgia South Sandwich Islands\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 199,\n            \"code\": \"ES\",\n            \"name\": \"Spain\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 200,\n            \"code\": \"LK\",\n            \"name\": \"Sri Lanka\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 201,\n            \"code\": \"SH\",\n            \"name\": \"St. Helena\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 202,\n            \"code\": \"PM\",\n            \"name\": \"St. Pierre and Miquelon\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 203,\n            \"code\": \"SD\",\n            \"name\": \"Sudan\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 204,\n            \"code\": \"SR\",\n            \"name\": \"Suriname\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 205,\n            \"code\": \"SJ\",\n            \"name\": \"Svalbarn and Jan Mayen Islands\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 206,\n            \"code\": \"SZ\",\n            \"name\": \"Swaziland\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 207,\n            \"code\": \"SE\",\n            \"name\": \"Sweden\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 208,\n            \"code\": \"CH\",\n            \"name\": \"Switzerland\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 209,\n            \"code\": \"SY\",\n            \"name\": \"Syrian Arab Republic\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 210,\n            \"code\": \"TW\",\n            \"name\": \"Taiwan\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 211,\n            \"code\": \"TJ\",\n            \"name\": \"Tajikistan\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 212,\n            \"code\": \"TZ\",\n            \"name\": \"Tanzania, United Republic of\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 213,\n            \"code\": \"TH\",\n            \"name\": \"Thailand\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 214,\n            \"code\": \"TG\",\n            \"name\": \"Togo\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 215,\n            \"code\": \"TK\",\n            \"name\": \"Tokelau\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 216,\n            \"code\": \"TO\",\n            \"name\": \"Tonga\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 217,\n            \"code\": \"TT\",\n            \"name\": \"Trinidad and Tobago\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 218,\n            \"code\": \"TN\",\n            \"name\": \"Tunisia\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 219,\n            \"code\": \"TR\",\n            \"name\": \"Turkey\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 220,\n            \"code\": \"TM\",\n            \"name\": \"Turkmenistan\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 221,\n            \"code\": \"TC\",\n            \"name\": \"Turks and Caicos Islands\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 222,\n            \"code\": \"TV\",\n            \"name\": \"Tuvalu\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 223,\n            \"code\": \"UG\",\n            \"name\": \"Uganda\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 224,\n            \"code\": \"UA\",\n            \"name\": \"Ukraine\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 225,\n            \"code\": \"AE\",\n            \"name\": \"United Arab Emirates\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 226,\n            \"code\": \"GB\",\n            \"name\": \"United Kingdom\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 227,\n            \"code\": \"UM\",\n            \"name\": \"United States minor outlying islands\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 228,\n            \"code\": \"UY\",\n            \"name\": \"Uruguay\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 229,\n            \"code\": \"UZ\",\n            \"name\": \"Uzbekistan\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 230,\n            \"code\": \"VU\",\n            \"name\": \"Vanuatu\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 231,\n            \"code\": \"VA\",\n            \"name\": \"Vatican City State\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 232,\n            \"code\": \"VE\",\n            \"name\": \"Venezuela\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 233,\n            \"code\": \"VN\",\n            \"name\": \"Vietnam\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 234,\n            \"code\": \"VG\",\n            \"name\": \"Virgin Islands (British)\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 235,\n            \"code\": \"VI\",\n            \"name\": \"Virgin Islands (U.S.)\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 236,\n            \"code\": \"WF\",\n            \"name\": \"Wallis and Futuna Islands\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 237,\n            \"code\": \"EH\",\n            \"name\": \"Western Sahara\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 238,\n            \"code\": \"YE\",\n            \"name\": \"Yemen\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 239,\n            \"code\": \"YU\",\n            \"name\": \"Yugoslavia\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 240,\n            \"code\": \"ZR\",\n            \"name\": \"Zaire\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 241,\n            \"code\": \"ZM\",\n            \"name\": \"Zambia\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 242,\n            \"code\": \"ZW\",\n            \"name\": \"Zimbabwe\",\n            \"status\": 1,\n            \"created_at\": null,\n            \"updated_at\": null\n        }\n    ]\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Occupations",
+			"item": [
+				{
+					"name": "getOccupations",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{access_token}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMVwvXC9hcGlcL3YxXC9sb2dpbiIsImlhdCI6MTYxODQ4NDUzOCwiZXhwIjoxNjU0NDg0NTM4LCJuYmYiOjE2MTg0ODQ1MzgsImp0aSI6IlZQQ1YyUk1EbEtrc01UckIiLCJzdWIiOjEsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.tKluPPTa1UHApUA53E37I04a_i8zBjpgsRMfH1aNiPs",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/v1/occupations",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"occupations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "store Occupations",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{access_token}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMVwvXC9hcGlcL3YxXC9sb2dpbiIsImlhdCI6MTYxODQ4NDUzOCwiZXhwIjoxNjU0NDg0NTM4LCJuYmYiOjE2MTg0ODQ1MzgsImp0aSI6IlZQQ1YyUk1EbEtrc01UckIiLCJzdWIiOjEsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.tKluPPTa1UHApUA53E37I04a_i8zBjpgsRMfH1aNiPs",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"Librarian56\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/occupations/store",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"occupations",
+								"store"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update Occupations",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{access_token}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMVwvXC9hcGlcL3YxXC9sb2dpbiIsImlhdCI6MTYxODQ4NDUzOCwiZXhwIjoxNjU0NDg0NTM4LCJuYmYiOjE2MTg0ODQ1MzgsImp0aSI6IlZQQ1YyUk1EbEtrc01UckIiLCJzdWIiOjEsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.tKluPPTa1UHApUA53E37I04a_i8zBjpgsRMfH1aNiPs",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"Librarian2\",\n    \"status\":0\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/occupations/update/31",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"occupations",
+								"update",
+								"31"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Teams",
+			"item": [
+				{
+					"name": "Add team",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.environment.get(\"variable_key\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{access_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Avengers",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Test Team 2",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "1234",
+									"type": "text"
+								},
+								{
+									"key": "logo",
+									"type": "file",
+									"src": "/D:/playground/matrimonial-assist/frontend/src/assets/banner-bg.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/team",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"team"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Submit Delete Reason",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.environment.get(\"variable_key\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{access_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "team_id",
+									"value": "7904fb92-0607-44ba-b2d3-fcc1b1273af8",
+									"type": "text"
+								},
+								{
+									"key": "reason_type",
+									"value": "abc",
+									"type": "text"
+								},
+								{
+									"key": "reason_text",
+									"value": "def",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/delete-reason-submit",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"delete-reason-submit"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Invite Team Member",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.environment.get(\"variable_key\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{access_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"team_id\": \"7904fb92-0607-44ba-b2d3-fcc1b1273af8\",\r\n    \"members\":[\r\n        {\r\n            \"role\": \"Member\",\r\n            \"add_as_a\": \"Representative\",\r\n            \"relationship\": \"Father\",\r\n            \"invitation_link\": \"abc12345\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/invite-team-members",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"invite-team-members"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Team Login",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.environment.get(\"variable_key\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{access_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"team_id\": \"7904fb92-0607-44ba-b2d3-fcc1b1273af8\",\r\n    \"password\": \"1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/team-login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"team-login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Join Team By Invitation",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.environment.get(\"variable_key\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{access_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"invitation_link\": \"abc12345\",\r\n    \"team_password\": \"1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/join-team-by-invitation",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"join-team-by-invitation"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add team Members[NA]",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{access_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "team_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "user_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "user_type",
+									"value": "Member",
+									"type": "text"
+								},
+								{
+									"key": "role",
+									"value": "Uncle",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/team-members",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"team-members"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Team",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{access_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "team_id",
+									"value": "475acdf6-fb51-481b-97b8-2059462f19e7",
+									"type": "text"
+								},
+								{
+									"key": "team_password",
+									"value": "1234",
+									"type": "text"
+								},
+								{
+									"key": "notify_members",
+									"value": "false",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/delete-team",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"delete-team"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Team member remove",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{access_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "team_id",
+									"value": "b27b2af7-fc59-4d78-bd4b-fb1bd59997c2",
+									"type": "text"
+								},
+								{
+									"key": "delete_user_id",
+									"value": "5",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/team-members-delete",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"team-members-delete"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User Team List",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/v1/team-list",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"team-list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Team Edit Check",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{access_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"team_id\": \"7904fb92-0607-44ba-b2d3-fcc1b1273af8\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/team-edit-check",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"team-edit-check"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Team Turn On",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{access_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"team_id\": \"7904fb92-0607-44ba-b2d3-fcc1b1273af8\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/team-turn-on",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"team-turn-on"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Change Team Member Access",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{access_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"team_id\": \"475acdf6-fb51-481b-97b8-2059462f19e7\",\r\n    \"user_id\": \"4\",\r\n    \"access_type\": \"Admin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/change-team-member-access",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"change-team-member-access"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "short Listed Candidat",
+			"item": [
+				{
+					"name": "getShortlistedcandidates",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{access_token}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMVwvXC9hcGlcL3YxXC9sb2dpbiIsImlhdCI6MTYxODQ4NDUzOCwiZXhwIjoxNjU0NDg0NTM4LCJuYmYiOjE2MTg0ODQ1MzgsImp0aSI6IlZQQ1YyUk1EbEtrc01UckIiLCJzdWIiOjEsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.tKluPPTa1UHApUA53E37I04a_i8zBjpgsRMfH1aNiPs",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/v1/short-listed-candidates",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"short-listed-candidates"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getTeamShortlistedcandidates",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{access_token}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMVwvXC9hcGlcL3YxXC9sb2dpbiIsImlhdCI6MTYxODQ4NDUzOCwiZXhwIjoxNjU0NDg0NTM4LCJuYmYiOjE2MTg0ODQ1MzgsImp0aSI6IlZQQ1YyUk1EbEtrc01UckIiLCJzdWIiOjEsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.tKluPPTa1UHApUA53E37I04a_i8zBjpgsRMfH1aNiPs",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/v1/team-short-listed-candidates",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"team-short-listed-candidates"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getDeletedCandidates",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{access_token}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMVwvXC9hcGlcL3YxXC9sb2dpbiIsImlhdCI6MTYxODQ4NDUzOCwiZXhwIjoxNjU0NDg0NTM4LCJuYmYiOjE2MTg0ODQ1MzgsImp0aSI6IlZQQ1YyUk1EbEtrc01UckIiLCJzdWIiOjEsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.tKluPPTa1UHApUA53E37I04a_i8zBjpgsRMfH1aNiPs",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/v1/deleted-candidates",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"deleted-candidates"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "showShortlistedcandidates",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{access_token}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMVwvXC9hcGlcL3YxXC9sb2dpbiIsImlhdCI6MTYxODQ4NDUzOCwiZXhwIjoxNjU0NDg0NTM4LCJuYmYiOjE2MTg0ODQ1MzgsImp0aSI6IlZQQ1YyUk1EbEtrc01UckIiLCJzdWIiOjEsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.tKluPPTa1UHApUA53E37I04a_i8zBjpgsRMfH1aNiPs",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/v1/show-short-listed-candidates/2",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"show-short-listed-candidates",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteShortlistedcandidates",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{access_token}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMVwvXC9hcGlcL3YxXC9sb2dpbiIsImlhdCI6MTYxODQ4NDUzOCwiZXhwIjoxNjU0NDg0NTM4LCJuYmYiOjE2MTg0ODQ1MzgsImp0aSI6IlZQQ1YyUk1EbEtrc01UckIiLCJzdWIiOjEsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.tKluPPTa1UHApUA53E37I04a_i8zBjpgsRMfH1aNiPs",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/v1/delete-short-listed-candidates/8",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"delete-short-listed-candidates",
+								"8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "storeShortlistedcandidates",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{access_token}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMVwvXC9hcGlcL3YxXC9sb2dpbiIsImlhdCI6MTYxODQ4NDUzOCwiZXhwIjoxNjU0NDg0NTM4LCJuYmYiOjE2MTg0ODQ1MzgsImp0aSI6IlZQQ1YyUk1EbEtrc01UckIiLCJzdWIiOjEsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.tKluPPTa1UHApUA53E37I04a_i8zBjpgsRMfH1aNiPs",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user_id\":1,\n    \"shortlisted_by\":2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/short-listed-candidates/store",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"short-listed-candidates",
+								"store"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateShortlistedcandidates",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{access_token}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMVwvXC9hcGlcL3YxXC9sb2dpbiIsImlhdCI6MTYxODQ4NDUzOCwiZXhwIjoxNjU0NDg0NTM4LCJuYmYiOjE2MTg0ODQ1MzgsImp0aSI6IlZQQ1YyUk1EbEtrc01UckIiLCJzdWIiOjEsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.tKluPPTa1UHApUA53E37I04a_i8zBjpgsRMfH1aNiPs",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user_id\":6,\n    \"shortlisted_by\":5\n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/update-shortlisted-candidates/4",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"update-shortlisted-candidates",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Representative",
+			"item": [
+				{
+					"name": "createRepresentative(Screen Name)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{access_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"first_name\":\"Representative\",\n    \"last_name\":\"Test\",\n    \"screen_name\":\"RepresentativeTest\"\n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/representative-screen-name",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"representative-screen-name"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "imageUpload",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{access_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "per_avatar_url",
+									"type": "file",
+									"src": "/D:/playground/matrimonial-assist/frontend/src/assets/r-join.png"
+								},
+								{
+									"key": "per_main_image_url",
+									"type": "file",
+									"src": "/D:/playground/matrimonial-assist/frontend/src/assets/r-join2.png"
+								},
+								{
+									"key": "anybody_can_see",
+									"value": "0",
+									"description": "0=No,1=Yes",
+									"type": "text"
+								},
+								{
+									"key": "only_team_can_see",
+									"value": "1",
+									"description": "0=No,1=Yes",
+									"type": "text"
+								},
+								{
+									"key": "team_connection_can_see",
+									"value": "0",
+									"description": "0=No,1=Yes",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/representative/image/upload",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"representative",
+								"image",
+								"upload"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "finalSubmit",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{access_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"is_agree\":\"1\"\n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/representative/final/submit",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"representative",
+								"final",
+								"submit"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "varify identity",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{access_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "is_document_upload",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "ver_document_type",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "ver_country",
+									"value": "Bangladesh",
+									"type": "text"
+								},
+								{
+									"key": "ver_city",
+									"value": "Dhaka",
+									"type": "text"
+								},
+								{
+									"key": "ver_document_frontside",
+									"type": "file",
+									"src": "/home/habib/Desktop/Selection_001.png"
+								},
+								{
+									"key": "ver_document_backside",
+									"type": "file",
+									"src": []
+								},
+								{
+									"key": "ver_recommender_title",
+									"value": "Mr",
+									"type": "text"
+								},
+								{
+									"key": "ver_recommender_first_name",
+									"value": "ahsan",
+									"type": "text"
+								},
+								{
+									"key": "ver_recommender_last_name",
+									"value": "kamal",
+									"type": "text"
+								},
+								{
+									"key": "ver_recommender_occupation",
+									"value": "pro",
+									"type": "text"
+								},
+								{
+									"key": "ver_recommender_address",
+									"value": "bs",
+									"type": "text"
+								},
+								{
+									"key": "ver_recommender_mobile_no",
+									"value": "01840040371",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/representative/verify/identity",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"representative",
+								"verify",
+								"identity"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "essentialInformation",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{access_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"per_gender\":1,\n    \"dob\":\"2021-05-07\",\n    \"per_occupation\":\"programmer\"\n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/representative/essentialInformation",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"representative",
+								"essentialInformation"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "contactinfo",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{access_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"per_email\":\"ahabib@bs-23.net\",\n    \"per_current_residence_country\":\"Bangladesh\",\n    \"per_current_residence_city\":\"Dhaka\",\n    \"per_permanent_country\":\"Bangladesh\",\n    \"per_permanent_city\":\"Dhaka\",\n    \"per_county\":\"Bangladesh\",\n    \"per_telephone_no\":\"01840040371\",\n    \"mobile_number\":\"0184004071\",\n    \"mobile_country_code\":\"+88\",\n    \"per_permanent_post_code\":\"1212\",\n    \"per_permanent_address\":\"Dhaka,Banglasdesh\"\n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/representative/contactinfo",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"representative",
+								"contactinfo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getRepresentative",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/v1/representative-information",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"representative-information"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Connection",
+			"item": []
+		}
+	]
+}
