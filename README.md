@@ -1,5 +1,7 @@
 # Firestore Chat
 
+This chat application is based on Firestore service of Google Firebase.
+
 ## Feature List
 
 1. Realtime Chat with google firestore database
@@ -15,6 +17,9 @@
 3. Firebase Firestore Database
 
 ## Firebase Account setup:
+
+* Below steps are based on google's firebase console UI at the time of this project development. If google's UI changes, then please see their docs to configure the firebase App in firebase console.
+
 1. Go to Firebase Console (https://console.firebase.google.com/)
 2. Click on add project
 ![image](https://user-images.githubusercontent.com/19352999/122765457-5666d400-d2c2-11eb-9a3c-adaa103a7d29.png)
