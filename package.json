@@ -11,7 +11,7 @@
     "firebase": "^8.6.8",
     "glob-parent": "^6.0.0",
     "normalize-url": "^6.1.0",
-    "trim-newlines": "^4.0.2",
+    "trim-newlines": "^3.0.1",
     "vue": "^2.6.14",
     "vue-router": "^3.2.0",
     "vuex": "^3.4.0"
