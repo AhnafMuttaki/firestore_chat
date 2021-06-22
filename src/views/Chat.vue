@@ -20,16 +20,28 @@
                 ></span>
               </div>
             </div>
-            <div style="margin-top:5px;padding:10px"> 
-                <button style="border:1px solid black;border-radius:15px; background-color: #82ccdd;" @click="createConversation">Create Conversation</button>
+            <div style="margin-top: 5px; padding: 10px">
+              <button
+                style="
+                  border: 1px solid black;
+                  border-radius: 15px;
+                  background-color: #82ccdd;
+                "
+                @click="createConversation"
+              >
+                Create Conversation
+              </button>
             </div>
-            <div>
-              Unread({{totalUnreadCount}})
-            </div>
+            <div>Unread({{ totalUnreadCount }})</div>
           </div>
           <div class="card-body contacts_body">
             <ul class="contacts">
-              <li v-for="item in recentConversations" :key="item.id" class="active" @click="selectConversation(item.id)">
+              <li
+                v-for="item in recentConversations"
+                :key="item.id"
+                class="active"
+                @click="selectConversation(item.id)"
+              >
                 <div class="d-flex bd-highlight">
                   <div class="img_cont">
                     <img
@@ -38,27 +50,12 @@
                     />
                     <span class="online_icon"></span>
                   </div>
-                  <div class="user_info" style="width: 150px;">
-                    <span style="word-wrap: break-word;">{{item.title}}</span>
+                  <div class="user_info" style="width: 150px">
+                    <span style="word-wrap: break-word">{{ item.title }}</span>
                     <!-- <p>Kalid is online</p> -->
                   </div>
                 </div>
               </li>
-              <!-- <li>
-                <div class="d-flex bd-highlight">
-                  <div class="img_cont">
-                    <img
-                      src="https://2.bp.blogspot.com/-8ytYF7cfPkQ/WkPe1-rtrcI/AAAAAAAAGqU/FGfTDVgkcIwmOTtjLka51vineFBExJuSACLcBGAs/s320/31.jpg"
-                      class="rounded-circle user_img"
-                    />
-                    <span class="online_icon offline"></span>
-                  </div>
-                  <div class="user_info">
-                    <span>Taherah Big</span>
-                    <p>Taherah left 7 mins ago</p>
-                  </div>
-                </div>
-              </li> -->
             </ul>
           </div>
           <div class="card-footer"></div>
@@ -76,7 +73,7 @@
                 <span class="online_icon"></span>
               </div>
               <div class="user_info">
-                <span>{{getConversationTitle}}</span>
+                <span>{{ getConversationTitle }}</span>
                 <!-- <p>1767 Messages</p> -->
               </div>
               <div class="video_cam">
@@ -95,31 +92,36 @@
             </div>
           </div>
           <div class="card-body msg_card_body">
-            <div v-bind:id="item.id" v-for="item in getMessageList" :key="item.id" 
-            v-bind:class="['d-flex',(item.sent_by === $store.state.user.user_id) ? 'justify-content-end' : 'justify-content-start','mb-4']">
+            <div
+              v-bind:id="item.id"
+              v-for="item in getMessageList"
+              :key="item.id"
+              v-bind:class="[
+                'd-flex',
+                item.sent_by === $store.state.user.user_id
+                  ? 'justify-content-end'
+                  : 'justify-content-start',
+                'mb-4',
+              ]"
+            >
               <div class="img_cont_msg">
                 <img
                   src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg"
                   class="rounded-circle user_img_msg"
                 />
               </div>
-              <div class="msg_cotainer" v-bind:class="[(item.sent_by === $store.state.user.user_id) ? 'msg_cotainer' : 'msg_cotainer_send']">
-                {{item.msg_text}}
+              <div
+                class="msg_cotainer"
+                v-bind:class="[
+                  item.sent_by === $store.state.user.user_id
+                    ? 'msg_cotainer'
+                    : 'msg_cotainer_send',
+                ]"
+              >
+                {{ item.msg_text }}
                 <!-- <div class="msg_time">{{item.sent_at.toDate()}}</div> -->
               </div>
             </div>
-            <!-- <div class="d-flex justify-content-end mb-4">
-              <div class="msg_cotainer_send">
-                Hi Khalid i am good tnx how about you?
-                <span class="msg_time_send">8:55 AM, Today</span>
-              </div>
-              <div class="img_cont_msg">
-                <img
-                  src="https://2.bp.blogspot.com/-8ytYF7cfPkQ/WkPe1-rtrcI/AAAAAAAAGqU/FGfTDVgkcIwmOTtjLka51vineFBExJuSACLcBGAs/s320/31.jpg"
-                  class="rounded-circle user_img_msg"
-                />
-              </div>
-            </div> -->
           </div>
           <div class="card-footer">
             <div class="input-group">
@@ -132,7 +134,7 @@
                 name=""
                 class="form-control type_msg"
                 placeholder="Type your message..."
-                v-on:keyup.enter = "sendMsg"
+                v-on:keyup.enter="sendMsg"
                 v-model="msg_text"
               ></textarea>
               <div class="input-group-append">
@@ -149,85 +151,102 @@
 </template>
 
 <script>
-export default{
-  name: 'Chat',
-  data(){
+export default {
+  name: "Chat",
+  data() {
     return {
-      msg_text: '',
-      conv_search_key: ''
+      msg_text: "",
+      conv_search_key: "",
     };
   },
-  created(){
-    let user_info = this.$store.getters['userInfo'];
+  created() {
+    // Loads the messages from firestore database
+    let user_info = this.$store.getters["userInfo"];
     let user_id = user_info.user_id;
-    this.$store.dispatch('getConversations',user_id);
-    this.$store.dispatch('getMsgs');
-    this.$store.dispatch('getUnreadRecords',user_id);
+    this.$store.dispatch("getConversations", user_id);
+    this.$store.dispatch("getMsgs");
+    this.$store.dispatch("getUnreadRecords", user_id);
   },
-  computed:{
-    getConversationTitle: function(){
-      var conv_title = '';
-      for(var i=0;i<this.$store.state.chat.conversations.length;i++){
-        if(this.$store.state.chat.conversations[i].id === this.$store.state.chat.current_conversation){
+  computed: {
+    getConversationTitle: function () {
+      // Returns conversation title
+      var conv_title = "";
+      for (var i = 0; i < this.$store.state.chat.conversations.length; i++) {
+        if (
+          this.$store.state.chat.conversations[i].id ===
+          this.$store.state.chat.current_conversation
+        ) {
           conv_title = this.$store.state.chat.conversations[i].title;
         }
       }
       return conv_title;
     },
-    getMessageList: function(){
+    getMessageList: function () {
+      // Chat message list
       var messageList = [];
-      for(var i=0; i<this.$store.state.chat.messages.length; i++){
-        if(this.$store.state.chat.messages[i].conv_id === this.$store.state.chat.current_conversation){
+      for (var i = 0; i < this.$store.state.chat.messages.length; i++) {
+        if (
+          this.$store.state.chat.messages[i].conv_id ===
+          this.$store.state.chat.current_conversation
+        ) {
           messageList.push(this.$store.state.chat.messages[i]);
         }
       }
       return messageList;
     },
-    totalUnreadCount: function(){
+    totalUnreadCount: function () {
+      // Returns unread message count
       return this.$store.state.chat.unread_records.length;
     },
-    recentConversations: function(){
-      if(this.conv_search_key == null || this.conv_search_key == ""){
+    recentConversations: function () {
+      // Returns recent conversation list
+      if (this.conv_search_key == null || this.conv_search_key == "") {
         return this.$store.state.chat.conversations;
-      }
-      else{
+      } else {
         var convs = [];
         var lKey = this.conv_search_key.toLowerCase();
-        for(var i=0;i<this.$store.state.chat.conversations.length; i++){
-          var lTitle = this.$store.state.chat.conversations[i].title.toLowerCase();
-          if(lTitle.includes(lKey)){
+        for (var i = 0; i < this.$store.state.chat.conversations.length; i++) {
+          var lTitle =
+            this.$store.state.chat.conversations[i].title.toLowerCase();
+          if (lTitle.includes(lKey)) {
             convs.push(this.$store.state.chat.conversations[i]);
           }
         }
         return convs;
       }
-      
-    }
+    },
   },
-  methods:{
-    selectConversation(conv_id){
-      // this.current_conversation = conv_id;
-      this.$store.dispatch('setCurrentConversation',conv_id);
-      let user_info = this.$store.getters['userInfo'];
+  methods: {
+    selectConversation(conv_id) {
+      // Sets current conversation
+      this.$store.dispatch("setCurrentConversation", conv_id);
+      let user_info = this.$store.getters["userInfo"];
       let user_id = user_info.user_id;
       var payload = {
         user_id: user_id,
-        conv_id:conv_id
-      }
+        conv_id: conv_id,
+      };
 
-      this.$store.dispatch('clearUnreadMsg',payload);
+      this.$store.dispatch("clearUnreadMsg", payload);
     },
-    createConversation(){
-      // alert('Create Conversation Clicked');
-      var user_info = this.$store.getters['userInfo'];
+    createConversation() {
+      // Creates a mock conversation
+      var user_info = this.$store.getters["userInfo"];
       var user_id = parseInt(user_info.user_id, 10);
       var chat_with_user = user_id + 1;
-      var msg = "This will create a Mock conversation between user id:"+user_id.toString()+" AND "+chat_with_user.toString()+" .Please login with the user id:"+chat_with_user.toString()+" from another browser to chat";
+      var msg =
+        "This will create a Mock conversation between user id:" +
+        user_id.toString() +
+        " AND " +
+        chat_with_user.toString() +
+        " .Please login with the user id:" +
+        chat_with_user.toString() +
+        " from another browser to chat";
       alert(msg);
 
-      var members = [user_id,chat_with_user];
-      var conv_title = 'Test conv:('+user_id+','+chat_with_user+')';
-      var conv_type = 'connected';
+      var members = [user_id, chat_with_user];
+      var conv_title = "Test conv:(" + user_id + "," + chat_with_user + ")";
+      var conv_type = "connected";
 
       console.log(members);
       console.log(conv_title);
@@ -237,17 +256,17 @@ export default{
         title: conv_title,
         type: conv_type,
         members: members,
-        last_msg: ''
-      }
-      this.$store.dispatch('createConversation',newConv);
+        last_msg: "",
+      };
+      this.$store.dispatch("createConversation", newConv);
     },
-    sendMsg(){
-      console.log('enter pressed');
+    sendMsg() {
+      // Sends msg
+      console.log("enter pressed");
       var current_conv = this.$store.state.chat.current_conversation;
-      if(current_conv == null || current_conv == ''){
-        alert('Please select conversation');
-      }
-      else{
+      if (current_conv == null || current_conv == "") {
+        alert("Please select conversation");
+      } else {
         var sent_by = this.$store.state.user.user_id;
         var msg_text = this.msg_text;
         var conv_id = this.$store.state.chat.current_conversation;
@@ -259,25 +278,23 @@ export default{
           conv_id: conv_id,
           msg_text: msg_text,
           sent_by: sent_by,
-          sent_at: sent_at
-
-        }
+          sent_at: sent_at,
+        };
 
         var payload = {
-          sent_by:sent_by,
-          msg_text:msg_text,
-          conv_id:conv_id,
-          members:members,
-          conv_type:conv_type,
-          new_msg:new_msg
-        }
-        this.$store.dispatch('sendMsg',payload);
+          sent_by: sent_by,
+          msg_text: msg_text,
+          conv_id: conv_id,
+          members: members,
+          conv_type: conv_type,
+          new_msg: new_msg,
+        };
+        this.$store.dispatch("sendMsg", payload);
         this.msg_text = "";
       }
-    }
-
-  }
-}
+    },
+  },
+};
 </script>
 
 
